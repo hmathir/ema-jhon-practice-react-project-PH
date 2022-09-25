@@ -32,7 +32,7 @@ const Shop = () => {
                 }
             </div>
             <div className='hidden md:block md:col-span-1'>
-                <CartPanel cart={cart} handleATC={handleClear}></CartPanel>
+                <CartPanel cart={cart} handleClear={handleClear}></CartPanel>
             </div>
         </div>
     );

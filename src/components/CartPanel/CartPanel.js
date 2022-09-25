@@ -12,13 +12,13 @@ const CartPanel = (props) => {
       <h1 className="text-3xl text-center pt-10">Order Summary</h1>
       <div className="mt-[30px] mx-[30px] leading-10">
         <p>Selected Item:{props.cart.length}</p>
-        <p>Total Price:${price}</p>
-        <p>Total Shipping Charge: ${shippingCharge}</p>
-        <p>Tax: ${tax}</p>
-        <h1 className="text-xl">Grand Total: ${total}</h1>
+        <p>Total Price:${price.toFixed(2)}</p>
+        <p>Total Shipping Charge: ${shippingCharge.toFixed(2)}</p>
+        <p>Tax: ${tax.toFixed(2)}</p>
+        <h1 className="text-xl">Grand Total: ${total.toFixed(2)}</h1>
       </div>
 
-      <button onClick={() => props.handleClear()} className="mt-10 block w-3/4 mx-auto bg-[#FF3030] text-white h-12 hover:bg-orange-500 rounded-md">
+      <button onClick={props.handleClear} className="mt-10 block w-3/4 mx-auto bg-[#FF3030] text-white h-12 hover:bg-orange-500 rounded-md">
         Clear Cart <FontAwesomeIcon icon={faTrashAlt}></FontAwesomeIcon>
       </button>
       <button className="block w-3/4 mx-auto bg-[#FF9900] text-white h-12 hover:bg-red-500 mt-6 rounded-md"> 
