@@ -18,7 +18,7 @@ const CartPanel = (props) => {
         <h1 className="text-xl">Grand Total: ${total}</h1>
       </div>
 
-      <button onClick={() => props.handleATC([[]])} className="mt-10 block w-3/4 mx-auto bg-[#FF3030] text-white h-12 hover:bg-orange-500 rounded-md">
+      <button onClick={() => props.handleClear()} className="mt-10 block w-3/4 mx-auto bg-[#FF3030] text-white h-12 hover:bg-orange-500 rounded-md">
         Clear Cart <FontAwesomeIcon icon={faTrashAlt}></FontAwesomeIcon>
       </button>
       <button className="block w-3/4 mx-auto bg-[#FF9900] text-white h-12 hover:bg-red-500 mt-6 rounded-md"> 
