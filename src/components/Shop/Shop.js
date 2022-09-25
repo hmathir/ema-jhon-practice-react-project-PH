@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import { setLocalStorage, storedProducts } from "../../utilities/localStorage";
+
 import CartPanel from "../CartPanel/CartPanel";
 import Product from "../Product/Product";
 
@@ -15,9 +17,35 @@ const Shop = () => {
         fetchProducts();
     },[])
 
+    useEffect(()=>{
+        const storedCart = storedProducts();
+        const savedCart = [];
+        for(const id in storedCart){
+            const addedProducts = products.find(item => item.id === id);
+            if(addedProducts){
+                const quantity = storedCart[id];
+                addedProducts.quantity = quantity;
+                savedCart.push(addedProducts);
+            }
+            setCart(savedCart);
+        }
+
+    },[products])
+
     const handleATC = (product) => {
-        const shoppingCart = [...cart, product];
+        let shoppingCart = [];
+        const exist = cart.find(item => item.id === product.id);
+        if(!exist){
+            product.quantity = 1;
+            shoppingCart = [...cart, product];
+        }else{
+            const rest = cart.filter(item => item.id !== product.id);
+            product.quantity = product.quantity + 1;
+            shoppingCart = [...rest, exist];
+        }
+
         setCart(shoppingCart);
+        setLocalStorage(product.id);
     }
     const handleClear = () => {
         const shoppingCart = [];

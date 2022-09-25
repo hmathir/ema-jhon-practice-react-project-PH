@@ -1,10 +1,9 @@
 import { faArrowRight, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import CartItem from "../CartItem/CartItem";
 
 const CartPanel = (props) => {
-  console.log(props.cart);
-  const price = props.cart.reduce((p,c) => p + c.price, 0);
+  const price = props.cart.reduce((p,c) => p + (c.price * c.quantity), 0);
+  const quantity = props.cart.reduce((pq,cq) => pq + cq.quantity, 0);
   let shippingCharge = 0;
   if(price !== 0) shippingCharge = 120;
   const tax = (price) * 0.1;
@@ -12,13 +11,13 @@ const CartPanel = (props) => {
   return (
     <div className="bg-[#FFE0B4] h-screen sticky top-0 overflow-y-scroll">
       <h1 className="text-3xl text-center pt-10">Order Summary</h1>
-      <div className="mt-10 space-y-3">
+      {/* <div className="mt-10 space-y-3">
         {
-          props.cart.map(item => <CartItem item={item}></CartItem>)
+          props.cart.filter(item => <CartItem item={item}></CartItem>)
         }
-      </div>
+      </div> */}
       <div className="mt-[30px] mx-[30px] leading-10">
-        <p>Selected Item:{props.cart.length}</p>
+        <p>Selected Item:{quantity}</p>
         <p>Total Price:${price.toFixed(2)}</p>
         <p>Total Shipping Charge: ${shippingCharge.toFixed(2)}</p>
         <p>Tax: ${tax.toFixed(2)}</p>
