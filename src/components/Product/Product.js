@@ -1,6 +1,7 @@
 import noImage from "../../images/noImg.jpeg";
 const Product = (props) => {
-  const { name, price, ratings, seller, img } = props.product;
+  const {product, handleATC} = props;
+  const { name, price, ratings, seller, img,  } = product;
   return (
     <div >
       <div className="border border-black rounded-xl h-full w-[300px] relative">
@@ -23,7 +24,7 @@ const Product = (props) => {
             <p>Ratting: {ratings}</p>
           </div>
         </div>
-        <button className="w-full bg-[#FFE0B4] absolute bottom-0 rounded-br-xl rounded-bl-xl h-12 hover:bg-orange-400">
+        <button onClick={()=> handleATC(product)} className="w-full bg-[#FFE0B4] absolute bottom-0 rounded-br-xl rounded-bl-xl h-12 hover:bg-orange-400">
           BUY NOW
         </button>
       </div>
